@@ -1,4 +1,4 @@
--- require 'impatient'
+require 'impatient'
 require 'plugins'
 require 'config'
 require 'utils'
