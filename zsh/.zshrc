@@ -10,7 +10,7 @@ fi
 
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
-export SSH_ASKPASS=/usr/bin/ksshaskpass
+export SSH_ASKPASS="$(which ksshaskpass)"
 typeset -g POWERLEVEL9K_INSTANT_PROMPT=quiet
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -89,7 +89,7 @@ export VISUAL=nvim
 export EDITOR=nvim
 
 if type "vivid" > /dev/null; then
-  export LS_COLORS="$(vivid generate snazzy)" 
+  export LS_COLORS="$(vivid generate jellybeans)" 
 fi
 
 export PYENV_ROOT="$HOME/.pyenv"
