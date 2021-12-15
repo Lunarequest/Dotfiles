@@ -3,7 +3,18 @@
   # paths it should manage.
   home.username = "nullrequest";
   home.homeDirectory = "/home/nullrequest";
+  services.gpg-agent = {
+    enable = true;
+    extraConfig = ''
+      pinentry-program ${pkgs.pinentry.qt}/bin/pinentry
+    '';
+  };
   programs.bat.enable = true;
+  programs.neovim.enable = true;
+  programs.gpg = { 
+      enable = true; 
+  };
+
   # install zsh, load zshrc
   programs.zsh = {
     enable = true;
@@ -24,7 +35,21 @@
     niv
     any-nix-shell
     stow
-  ];
+    python310
+    tree
+    clangStdenv
+    bear
+    wget
+    clang
+    clang-tools
+    flatpak-builder
+    rustup
+    discover
+    binutils
+    pinentry-qt
+    ksshaskpass
+    bpytop
+ ];
 
   programs.git = {
     enable = true;
