@@ -3,6 +3,7 @@
   # paths it should manage.
   home.username = "nullrequest";
   home.homeDirectory = "/home/nullrequest";
+
   services.gpg-agent = {
     enable = true;
     extraConfig = ''
@@ -10,10 +11,13 @@
     '';
   };
   programs.bat.enable = true;
-  programs.neovim.enable = true;
-  programs.gpg = { 
-      enable = true; 
+  programs.neovim = {
+    enable = true;
+    vimAlias = true;
+    viAlias = true;
+    extraConfig = builtins.readFile ../../../nvim/.config/nvim/init.lua;
   };
+  programs.gpg = { enable = true; };
 
   # install zsh, load zshrc
   programs.zsh = {
@@ -23,9 +27,17 @@
   # This defines packages
   home.packages = with pkgs; [
     ark
+    kate
+    appimage-run
+    discord
+    file
+    nerdfonts
     nixfmt
+    joplin-desktop
+    appstream
     kde-gtk-config
     nextcloud-client
+    nodePackages.bash-language-server
     nordic
     rust-analyzer
     unzip
@@ -35,21 +47,24 @@
     niv
     any-nix-shell
     stow
-    python310
+    python39
+    pipenv
     tree
-    clangStdenv
-    bear
     wget
-    clang
+    gcc
     clang-tools
     flatpak-builder
+    debugedit
     rustup
-    discover
     binutils
     pinentry-qt
     ksshaskpass
     bpytop
- ];
+    black
+    vscode
+    yarn
+    hugo
+  ];
 
   programs.git = {
     enable = true;

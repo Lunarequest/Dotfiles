@@ -79,7 +79,7 @@ COMPLETION_WAITING_DOTS="true"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git cargo zsh-syntax-highlighting zsh-history-substring-search zsh-autosuggestions ssh-agent gpg-agent)
+plugins=(git rust zsh-syntax-highlighting zsh-history-substring-search zsh-autosuggestions ssh-agent gpg-agent)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -91,9 +91,8 @@ source $ZSH/oh-my-zsh.sh
 export VISUAL=nvim
 export EDITOR=nvim
 
-if type "vivid" > /dev/null; then
-  export LS_COLORS="$(vivid generate jellybeans)" 
-fi
+export PATH="$PATH:$HOME/.cargo/bin/:$PYENV_ROOT/bin:$HOME/.local/bin"
+export LS_COLORS="$(vivid generate jellybeans)" 
 
 export PYENV_ROOT="$HOME/.pyenv"
 

@@ -83,7 +83,7 @@ vim.cmd [[autocmd CursorHold,CursorHoldI * lua vim.lsp.diagnostic.show_line_diag
 
 -- nvim cmp
 capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
-local servers = { 'clangd', 'rust_analyzer', 'pylsp' }
+local servers = { 'clangd', 'rust_analyzer', 'pylsp', 'bashls' }
 for _, lsp in ipairs(servers) do
   nvim_lsp[lsp].setup {
     -- on_attach = my_custom_on_attach,

@@ -57,7 +57,7 @@ return require('packer').startup(function()
   -- black for python formating
   use { 'psf/black', opt = true }
   -- tree sitter for highlighting
-  use { 'nvim-treesitter/nvim-treesitter', branch = '0.5-compat', run = ':TSUpdate' }
+  use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
   -- discord stuff
   use 'andweeb/presence.nvim'
   -- spell checker
