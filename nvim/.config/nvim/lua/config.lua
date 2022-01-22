@@ -65,11 +65,6 @@ o.updatetime = 250 -- make git gutter seem more responsive
 -- glow
 g.glow_broder = 'rounded'
 
--- disable virtual text
-vim.lsp.handlers['textDocument/publishDiagnostics'] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
-    virtual_text = false,
-})
-
 -- custom signs for lsp
 local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
 for type, icon in pairs(signs) do
@@ -78,8 +73,7 @@ for type, icon in pairs(signs) do
 end
 
 -- lsp show issues on hover
-vim.cmd [[autocmd CursorHold,CursorHoldI * lua vim.lsp.diagnostic.show_line_diagnostics({focusable=false})]]
-
+vim.cmd [[autocmd CursorHold,CursorHoldI * lua vim.diagnostic.open_float(nil, {focus=false})]]
 
 -- nvim cmp
 capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)

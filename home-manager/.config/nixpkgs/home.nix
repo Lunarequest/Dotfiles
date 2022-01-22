@@ -28,11 +28,13 @@
   home.packages = with pkgs; [
     ark
     kate
+    editorconfig-core-c
     appimage-run
     discord
     file
     nerdfonts
     nixfmt
+    python39Packages.pip
     joplin-desktop
     appstream
     kde-gtk-config
@@ -48,6 +50,7 @@
     any-nix-shell
     stow
     python39
+    nodePackages.npm
     pipenv
     tree
     wget
@@ -64,6 +67,7 @@
     vscode
     yarn
     hugo
+    kicad
   ];
 
   programs.git = {

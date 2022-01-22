@@ -38,6 +38,8 @@ return require('packer').startup(function()
   }
   -- lang server protcol
   use 'neovim/nvim-lspconfig'
+  -- editor config
+  use 'editorconfig/editorconfig-vim'
   -- colors
   use 'folke/lsp-colors.nvim'
   -- Autocompletion plugin
