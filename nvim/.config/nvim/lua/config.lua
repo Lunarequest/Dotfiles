@@ -65,6 +65,15 @@ o.updatetime = 250 -- make git gutter seem more responsive
 -- glow
 g.glow_broder = 'rounded'
 
+-- sign config lsp
+vim.diagnostic.config({
+  virtual_text = false,
+  signs = true,
+  underline = true,
+  update_in_insert = true,
+  severity_sort = true,
+})
+
 -- custom signs for lsp
 local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
 for type, icon in pairs(signs) do

@@ -24,11 +24,26 @@
     enable = true;
     initExtraBeforeCompInit = builtins.readFile ../../../zsh/.zshrc;
   };
+  programs.vscode = {
+        enable = true;
+         extensions = with pkgs.vscode-extensions; [
+            ms-vsliveshare.vsliveshare
+            dracula-theme.theme-dracula
+            matklad.rust-analyzer
+            golang.go 
+        ];
+  };
+
   # This defines packages
   home.packages = with pkgs; [
     ark
+    atom
+    vivid
+    manuskript
     kate
+    texlive.combined.scheme-medium
     editorconfig-core-c
+    libreoffice-fresh-unwrapped
     appimage-run
     discord
     file
@@ -50,6 +65,7 @@
     any-nix-shell
     stow
     python39
+    nodejs
     nodePackages.npm
     pipenv
     tree
@@ -64,7 +80,6 @@
     ksshaskpass
     bpytop
     black
-    vscode
     yarn
     hugo
     kicad

@@ -1,26 +1,18 @@
 if type "any-nix-shell" > /dev/null; then
     any-nix-shell zsh --info-right | source /dev/stdin
 fi
-# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
-# Initialization code that may require console input (password prompts, [y/n]
-# confirmations, etc.) must go above this block; everything else may go below.
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-fi
-
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 export SSH_ASKPASS="$(which ksshaskpass)"
-typeset -g POWERLEVEL9K_INSTANT_PROMPT=quiet
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
 #source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
-ZSH_THEME="powerlevel10k/powerlevel10k"
+ZSH_THEME="spaceship"
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
 # a theme from this variable instead of looking in $ZSH/themes/
@@ -91,15 +83,12 @@ source $ZSH/oh-my-zsh.sh
 export VISUAL=nvim
 export EDITOR=nvim
 
-export PATH="$PATH:$HOME/.cargo/bin/:$PYENV_ROOT/bin:$HOME/.local/bin"
 export LS_COLORS="$(vivid generate jellybeans)" 
 
-export PYENV_ROOT="$HOME/.pyenv"
-
 if ! type "yarn" > /dev/null; then
-  export PATH="$PATH:$HOME/.cargo/bin/:$PYENV_ROOT/bin:$HOME/.local/bin"
+  export PATH="$PATH:$HOME/.cargo/bin/:$HOME/.local/bin"
 else
-  export PATH="$PATH:$HOME/.cargo/bin/:$PYENV_ROOT/bin:$(yarn global bin):$HOME/.local/bin"
+  export PATH="$PATH:$HOME/.cargo/bin/:$(yarn global bin):$HOME/.local/bin"
 fi
 
 # Preferred editor for local and remote sessions
@@ -125,21 +114,5 @@ alias update_all="rpm-ostree update && flatpak update && rustup upgrade"
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-if type "pyenv" > /dev/null; then
-    eval "$(pyenv init -)"
-    eval "$(pyenv virtualenv-init -)"
-fi
-
-if [[ -a ~/dlang/dmd-2.098.0/activate ]]; then 
-    source ~/dlang/dmd-2.098.0/activate
-fi
-
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-
 # node stuff
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
-export PNPM_HOME="$HOME/.local/share/pnpm"
-export PATH="$PNPM_HOME:$PATH"
-
-alias luamake=/home/nullrequest/lua-language-server/3rd/luamake/luamake

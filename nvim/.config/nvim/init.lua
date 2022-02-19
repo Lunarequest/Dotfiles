@@ -7,10 +7,11 @@ require 'toggleterm-config'
 require 'discord'
 require 'keybindings'
 require 'statusline'
+require 'theme_config'
 require 'nvimtree'
 
 vim.cmd [[
     syntax enable
-    colorscheme nord
+    colorscheme catppuccin
     autocmd BufRead * silent! NvimTreeToggle
 ]]

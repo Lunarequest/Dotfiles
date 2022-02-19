@@ -30,7 +30,7 @@ return require('packer').startup(function()
     end,
   }
   -- the theme baby
-  use 'arcticicestudio/nord-vim'
+  use 'catppuccin/nvim'
   -- status line
   use {
     'nvim-lualine/lualine.nvim',
