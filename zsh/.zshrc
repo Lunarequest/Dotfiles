@@ -1,6 +1,13 @@
 if type "any-nix-shell" > /dev/null; then
     any-nix-shell zsh --info-right | source /dev/stdin
 fi
+#spaceship config
+
+export SPACESHIP_HOST_SHOW="always"
+export SPACESHIP_USER_SHOW="always"
+export SPACESHIP_EXIT_CODE_SHOW=true 
+
+
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
