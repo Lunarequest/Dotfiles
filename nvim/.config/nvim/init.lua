@@ -11,6 +11,7 @@ require 'theme_config'
 require 'nvimtree'
 
 vim.cmd [[
+    let mapleader="\<SPACE>"
     syntax enable
     colorscheme catppuccin
     autocmd BufRead * silent! NvimTreeToggle

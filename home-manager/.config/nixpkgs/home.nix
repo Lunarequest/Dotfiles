@@ -82,7 +82,6 @@
     black
     yarn
     hugo
-    kicad
   ];
 
   programs.git = {

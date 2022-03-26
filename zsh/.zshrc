@@ -91,13 +91,16 @@ export VISUAL=nvim
 export EDITOR=nvim
 
 export LS_COLORS="$(vivid generate jellybeans)" 
-
+export PATH="$PATH:/usr/local/bin"
 if ! type "yarn" > /dev/null; then
   export PATH="$PATH:$HOME/.cargo/bin/:$HOME/.local/bin"
 else
   export PATH="$PATH:$HOME/.cargo/bin/:$(yarn global bin):$HOME/.local/bin"
 fi
 
+if type "gofish" > /dev/null; then
+    eval $(gofish tank)
+fi
 # Preferred editor for local and remote sessions
 # if [[ -n $SSH_CONNECTION ]]; then
 #   export EDITOR='vim'

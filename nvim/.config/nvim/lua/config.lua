@@ -29,8 +29,8 @@ o.smartindent = true
 o.hidden = true
 
 -- if the terminal has "true colors" use them
-if vim.fn.has 'termguicolors' == 1 then
-  o.termguicolors = true
+if vim.fn.has 'termguicolors' == 1 then  
+	o.termguicolors = true
 end
 
 -- aurgroup/autocmd hasn't been implemented yet :(

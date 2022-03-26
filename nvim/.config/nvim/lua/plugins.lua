@@ -60,6 +60,12 @@ return require('packer').startup(function()
   use { 'psf/black', opt = true }
   -- tree sitter for highlighting
   use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
+  -- orgmode
+  use {
+       'nvim-orgmode/orgmode', config = function()
+        require('orgmode').setup{}
+        end
+      }
   -- discord stuff
   use 'andweeb/presence.nvim'
   -- spell checker
