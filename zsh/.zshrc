@@ -19,7 +19,7 @@ export SSH_ASKPASS="$(which ksshaskpass)"
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
 #source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
-ZSH_THEME="spaceship"
+ZSH_THEME="powerlevel10k/powerlevel10k"
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
 # a theme from this variable instead of looking in $ZSH/themes/
@@ -98,9 +98,6 @@ else
   export PATH="$PATH:$HOME/.cargo/bin/:$(yarn global bin):$HOME/.local/bin"
 fi
 
-if type "gofish" > /dev/null; then
-    eval $(gofish tank)
-fi
 # Preferred editor for local and remote sessions
 # if [[ -n $SSH_CONNECTION ]]; then
 #   export EDITOR='vim'
@@ -126,3 +123,6 @@ alias update_all="rpm-ostree update && flatpak update && rustup upgrade"
 
 # node stuff
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
