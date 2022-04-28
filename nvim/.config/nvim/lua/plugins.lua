@@ -30,7 +30,7 @@ return require('packer').startup(function()
     end,
   }
   -- the theme baby
-  use 'catppuccin/nvim'
+  use 'sainnhe/everforest'
   -- status line
   use {
     'nvim-lualine/lualine.nvim',
@@ -60,18 +60,12 @@ return require('packer').startup(function()
   use { 'psf/black', opt = true }
   -- tree sitter for highlighting
   use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
-  -- orgmode
-  use {
-       'nvim-orgmode/orgmode', config = function()
-        require('orgmode').setup{}
-        end
-      }
   -- discord stuff
   use 'andweeb/presence.nvim'
   -- spell checker
   use {
     'lewis6991/spellsitter.nvim',
-    requires = { 'nvim-treesitter/nvim-treesitter', branch = '0.5-compat' },
+    requires = { 'nvim-treesitter/nvim-treesitter' },
     opt = true,
   }
   -- rust stuff nya
@@ -86,11 +80,11 @@ return require('packer').startup(function()
   -- collaboration
   use 'jbyuki/instant.nvim'
   -- markdown rendering
-  use { 'npxbr/glow.nvim', run = 'GlowInstall' }
+  use { 'npxbr/glow.nvim', run = ':GlowInstall' }
   -- toggle term
   use { 'akinsho/toggleterm.nvim' }
   --rainbow brackets uwu
-  use { 'p00f/nvim-ts-rainbow', requires = { 'nvim-treesitter/nvim-treesitter', branch = '0.5-compat' } }
+  use { 'p00f/nvim-ts-rainbow', requires = { 'nvim-treesitter/nvim-treesitter' } }
   if packer_bootstrap then
     require('packer').sync()
   end

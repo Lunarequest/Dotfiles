@@ -29,8 +29,8 @@ o.smartindent = true
 o.hidden = true
 
 -- if the terminal has "true colors" use them
-if vim.fn.has 'termguicolors' == 1 then  
-	o.termguicolors = true
+if vim.fn.has 'termguicolors' == 1 then
+  o.termguicolors = true
 end
 
 -- aurgroup/autocmd hasn't been implemented yet :(
@@ -65,19 +65,23 @@ o.updatetime = 250 -- make git gutter seem more responsive
 -- glow
 g.glow_broder = 'rounded'
 
+-- everforest
+g.everforest_background = 'soft'
+g.everforest_better_performance = 1
+
 -- sign config lsp
-vim.diagnostic.config({
+vim.diagnostic.config {
   virtual_text = false,
   signs = true,
   underline = true,
   update_in_insert = true,
   severity_sort = true,
-})
+}
 
 -- custom signs for lsp
-local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
+local signs = { Error = ' ', Warn = ' ', Hint = ' ', Info = ' ' }
 for type, icon in pairs(signs) do
-  local hl = "DiagnosticSign" .. type
+  local hl = 'DiagnosticSign' .. type
   vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
 end
 

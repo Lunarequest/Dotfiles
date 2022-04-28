@@ -7,12 +7,11 @@ require 'toggleterm-config'
 require 'discord'
 require 'keybindings'
 require 'statusline'
-require 'theme_config'
 require 'nvimtree'
 
 vim.cmd [[
     let mapleader="\<SPACE>"
     syntax enable
-    colorscheme catppuccin
+    colorscheme everforest
     autocmd BufRead * silent! NvimTreeToggle
 ]]
