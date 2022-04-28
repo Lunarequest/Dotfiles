@@ -6,6 +6,7 @@ local nvim_lsp = require 'lspconfig'
 local luasnip = require 'luasnip'
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 local cmp = require 'cmp'
+local fn = vim.fn
 
 -- set line number
 o.number = true
@@ -29,7 +30,7 @@ o.smartindent = true
 o.hidden = true
 
 -- if the terminal has "true colors" use them
-if vim.fn.has 'termguicolors' == 1 then
+if fn.has 'termguicolors' == 1 then
   o.termguicolors = true
 end
 
@@ -82,7 +83,7 @@ vim.diagnostic.config {
 local signs = { Error = ' ', Warn = ' ', Hint = ' ', Info = ' ' }
 for type, icon in pairs(signs) do
   local hl = 'DiagnosticSign' .. type
-  vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
+  fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
 end
 
 -- lsp show issues on hover
