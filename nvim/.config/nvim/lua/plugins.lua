@@ -38,6 +38,11 @@ return require('packer').startup(function()
   }
   -- lang server protcol
   use 'neovim/nvim-lspconfig'
+  -- hook up none lsps with a general purpose lsp
+  use {
+     'jose-elias-alvarez/null-ls.nvim',
+     requires = { 'nvim-lua/plenary.nvim' },
+  }
   -- editor config
   use 'editorconfig/editorconfig-vim'
   -- colors

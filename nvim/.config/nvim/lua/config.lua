@@ -7,6 +7,7 @@ local luasnip = require 'luasnip'
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 local cmp = require 'cmp'
 local fn = vim.fn
+local null_ls = require("null-ls")
 
 -- set line number
 o.number = true
@@ -98,6 +99,24 @@ for _, lsp in ipairs(servers) do
     capabilities = capabilities,
   }
 end
+
+-- null-ls setup
+null_ls.setup({
+    null_ls.builtins.formatting.stylua,
+    null_ls.builtins.formatting.rustfmt,
+    null_ls.builtins.formatting.black,
+    null_ls.builtins.hover.dictionary,
+    on_attach = function(client)
+        if client.resolved_capabilities.document_formatting then
+            vim.cmd([[
+              augroup LspFormatting
+                autocmd! * <buffer>
+                autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()
+              augroup END  
+            ]])
+        end
+    end,
+})
 
 vim.o.completeopt = 'menuone,noselect'
 
