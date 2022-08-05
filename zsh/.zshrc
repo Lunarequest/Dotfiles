@@ -1,25 +1,30 @@
+source /home/nullrequest.homedir/.zsh/zsh-snap/znap.zsh
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
 if type "any-nix-shell" > /dev/null; then
     any-nix-shell zsh --info-right | source /dev/stdin
 fi
-#spaceship config
+[[ -f ~/.zsh/zsh-snap/znap.zsh ]] ||
+    git clone --depth 1 -- \
+        https://github.com/marlonrichert/zsh-snap.git ~/Git/zsh-snap
 
-export SPACESHIP_HOST_SHOW="always"
-export SPACESHIP_USER_SHOW="always"
-export SPACESHIP_EXIT_CODE_SHOW=true 
 
 
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
-
-# Path to your oh-my-zsh installation.
-export ZSH="$HOME/.oh-my-zsh"
+#export ZSH="~/.zsh"
 export SSH_ASKPASS="$(which ksshaskpass)"
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
 #source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
-ZSH_THEME="powerlevel10k/powerlevel10k"
+znap prompt romkatv/powerlevel10k
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
 # a theme from this variable instead of looking in $ZSH/themes/
@@ -78,9 +83,10 @@ COMPLETION_WAITING_DOTS="true"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git rust zsh-syntax-highlighting zsh-history-substring-search zsh-autosuggestions ssh-agent gpg-agent)
-
-source $ZSH/oh-my-zsh.sh
+znap source zsh-users/zsh-autosuggestions
+znap source zsh-users/zsh-syntax-highlighting
+znap source zsh-users/zsh-history-substring-search 
+znap source ohmyzsh/ohmyzsh plugins/{git,ssh-agent,gpg-agent}
 
 # User configuration
 # export MANPATH="/usr/local/man:$MANPATH"
@@ -118,6 +124,10 @@ alias cls="clear"
 alias kate='kstart5 kate'
 alias ip="ip -c"
 alias update_all="rpm-ostree update && flatpak update && rustup upgrade"
+alias ls="ls --color=auto"
+alias l="ls"
+alias ll="ls -l"
+alias la="ls -la"
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
