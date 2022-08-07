@@ -91,8 +91,8 @@ zi light zsh-users/zsh-autosuggestions
 zi light zsh-users/zsh-syntax-highlighting
 zi ice blockf
 zi light zsh-users/zsh-completions
-zi creinstall zsh-users/zsh-completions
-zi load z-shell/history-search-multi-word
+#zi creinstall zsh-users/zsh-completions
+zi load z-shell/H-S-MW
 zi snippet OMZ::plugins/ssh-agent/ssh-agent.plugin.zsh
 zi snippet OMZ::plugins/gpg-agent/gpg-agent.plugin.zsh
 # User configuration
