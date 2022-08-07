@@ -18,6 +18,16 @@ if type "any-nix-shell" > /dev/null; then
     any-nix-shell zsh --info-right | source /dev/stdin
 fi
 
+zi ice atinit'zmodload zsh/zprof'
+PROFILE_STARTUP=false
+if [[ "$PROFILE_STARTUP" == true ]]; then
+  zmodload zsh/zprof
+  PS4=$'%D{%M%S%.} %N:%i> '
+  exec 3>&2 2>$HOME/startlog.$$
+  setopt xtrace prompt_subst
+fi
+        
+        
 
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
@@ -93,8 +103,17 @@ zi ice blockf
 zi light zsh-users/zsh-completions
 #zi creinstall zsh-users/zsh-completions
 zi load z-shell/H-S-MW
-zi snippet OMZ::plugins/ssh-agent/ssh-agent.plugin.zsh
-zi snippet OMZ::plugins/gpg-agent/gpg-agent.plugin.zsh
+zi snippet OMZL::clipboard.zsh
+zi snippet OMZL::termsupport.zsh
+zi is-snippet wait lucid for \
+  OMZP::{ssh-agent,gpg-agent,git}\
+  if'[[ -f /etc/os-release ]] && source /etc/os-release && [[ "$ID" = arch ]]'\
+    OMZP::archlinux\
+  has'pip' \
+    OMZP::pip \
+  has'python' \
+    OMZP::python
+
 # User configuration
 # export MANPATH="/usr/local/man:$MANPATH"
 # export GPG_TTY=$(tty) # hack to fix gpg issues
@@ -143,3 +162,7 @@ export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+if [[ "$PROFILE_STARTUP" == true ]]; then
+  unsetopt xtrace
+  exec 2>&3 3>&-; zprof > ~/zshprofile$(date +'%s')
+fi
