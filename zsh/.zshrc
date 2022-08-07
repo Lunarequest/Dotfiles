@@ -89,8 +89,10 @@ COMPLETION_WAITING_DOTS="true"
 # Add wisely, as too many plugins slow down shell startup.
 zi light zsh-users/zsh-autosuggestions
 zi light zsh-users/zsh-syntax-highlighting
-zi light zsh-users/zsh-history-substring-search
-zi snippet OMZ::plugins/git/git.plugin.zsh
+zi ice blockf
+zi light zsh-users/zsh-completions
+zi creinstall zsh-users/zsh-completions
+zi load z-shell/history-search-multi-word
 zi snippet OMZ::plugins/ssh-agent/ssh-agent.plugin.zsh
 zi snippet OMZ::plugins/gpg-agent/gpg-agent.plugin.zsh
 # User configuration
