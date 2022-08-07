@@ -1,4 +1,3 @@
-source /home/nullrequest.homedir/.zsh/zsh-snap/znap.zsh
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
@@ -6,13 +5,18 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
+local chsm_ok='7fab1ecb8d2ffbdb4aa98dd1e51cebaeaa4d8137e1de11938f3e0df24af262bb'
+local chsm="$(command curl -fsL 'https://git.io/zi-loader' | sha256sum | awk '{print $1}')"
+if [[ ${chsm_ok} == ${chsm} ]]; then
+  source <(curl -sL https://git.io/zi-loader); zzinit
+else
+  print "Houston, we have a problem"; exit 1
+ fi
+
+
 if type "any-nix-shell" > /dev/null; then
     any-nix-shell zsh --info-right | source /dev/stdin
 fi
-[[ -f ~/.zsh/zsh-snap/znap.zsh ]] ||
-    git clone --depth 1 -- \
-        https://github.com/marlonrichert/zsh-snap.git ~/Git/zsh-snap
-
 
 
 # If you come from bash you might have to change your $PATH.
@@ -24,7 +28,7 @@ export SSH_ASKPASS="$(which ksshaskpass)"
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
 #source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
-znap prompt romkatv/powerlevel10k
+zi ice depth=1; zi light romkatv/powerlevel10k
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
 # a theme from this variable instead of looking in $ZSH/themes/
@@ -83,11 +87,12 @@ COMPLETION_WAITING_DOTS="true"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-znap source zsh-users/zsh-autosuggestions
-znap source zsh-users/zsh-syntax-highlighting
-znap source zsh-users/zsh-history-substring-search 
-znap source ohmyzsh/ohmyzsh plugins/{git,ssh-agent,gpg-agent}
-
+zi light zsh-users/zsh-autosuggestions
+zi light zsh-users/zsh-syntax-highlighting
+zi light zsh-users/zsh-history-substring-search
+zi snippet OMZ::plugins/git/git.plugin.zsh
+zi snippet OMZ::plugins/ssh-agent/ssh-agent.plugin.zsh
+zi snippet OMZ::plugins/gpg-agent/gpg-agent.plugin.zsh
 # User configuration
 # export MANPATH="/usr/local/man:$MANPATH"
 # export GPG_TTY=$(tty) # hack to fix gpg issues
