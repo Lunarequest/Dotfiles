@@ -1,6 +1,7 @@
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
+
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
@@ -10,8 +11,11 @@ local chsm="$(command curl -fsL 'https://git.io/zi-loader' | sha256sum | awk '{p
 if [[ ${chsm_ok} == ${chsm} ]]; then
   source <(curl -sL https://git.io/zi-loader); zzinit
 else
-  print "Houston, we have a problem"; exit 1
- fi
+  print "network down";
+  typeset -A ZI
+  ZI[BIN_DIR]="${HOME}/.zi/bin"
+  source "${ZI[BIN_DIR]}/zi.zsh"
+fi
 
 
 if type "any-nix-shell" > /dev/null; then
@@ -33,6 +37,14 @@ fi
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 #export ZSH="~/.zsh"
 export SSH_ASKPASS="$(which ksshaskpass)"
+zi is-snippet wait lucid for \
+  OMZP::{ssh-agent,gpg-agent,git}\
+  if'[[ -f /etc/os-release ]] && source /etc/os-release && [[ "$ID" = arch ]]'\
+    OMZP::archlinux\
+  has'pip' \
+    OMZP::pip \
+  has'python' \
+    OMZP::python
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
@@ -99,21 +111,15 @@ COMPLETION_WAITING_DOTS="true"
 # Add wisely, as too many plugins slow down shell startup.
 zi light zsh-users/zsh-autosuggestions
 zi light zsh-users/zsh-syntax-highlighting
+zi light bilelmoussaoui/flatpak-zsh-completion
 zi ice blockf
 zi light zsh-users/zsh-completions
 #zi creinstall zsh-users/zsh-completions
 zi load z-shell/H-S-MW
 zi snippet OMZL::clipboard.zsh
 zi snippet OMZL::termsupport.zsh
-zi is-snippet wait lucid for \
-  OMZP::{ssh-agent,gpg-agent,git}\
-  if'[[ -f /etc/os-release ]] && source /etc/os-release && [[ "$ID" = arch ]]'\
-    OMZP::archlinux\
-  has'pip' \
-    OMZP::pip \
-  has'python' \
-    OMZP::python
-
+zi has'zoxide' wait lucid for \
+  z-shell/zsh-zoxide
 # User configuration
 # export MANPATH="/usr/local/man:$MANPATH"
 # export GPG_TTY=$(tty) # hack to fix gpg issues
