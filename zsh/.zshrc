@@ -17,6 +17,7 @@ else
   source "${ZI[BIN_DIR]}/zi.zsh"
 fi
 
+typeset -g HISTSIZE=290000 SAVEHIST=290000 HISTFILE=~/.zhistory
 
 if type "any-nix-shell" > /dev/null; then
     any-nix-shell zsh --info-right | source /dev/stdin
@@ -31,7 +32,10 @@ if [[ "$PROFILE_STARTUP" == true ]]; then
   setopt xtrace prompt_subst
 fi
         
-        
+# Set compiler and compiler flags
+export CC=clang
+export CXX=clang++
+export COMMON_FLAGS="-O2 -flto=thin -fuse-ld=/usr/bin/ldd"
 
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
@@ -45,12 +49,19 @@ zi is-snippet wait lucid for \
     OMZP::pip \
   has'python' \
     OMZP::python
+
+zi light-mode for z-shell/z-a-meta-plugins @annexes \
+ @z-shell \
+ @rust-utils \
+ skip'zsh-autosuggestions' @zsh-users+fast\
+ skip'ripgrep bat' @console-tools
+[[ $COLORTERM = *(24bit|truecolor)* ]] || zmodload zsh/nearcolor
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
 #source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
-zi ice depth=1; zi light romkatv/powerlevel10k
+zi ice depth=1; zi light @romkatv
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
 # a theme from this variable instead of looking in $ZSH/themes/
@@ -109,13 +120,8 @@ COMPLETION_WAITING_DOTS="true"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-zi light zsh-users/zsh-autosuggestions
-zi light zsh-users/zsh-syntax-highlighting
 zi light bilelmoussaoui/flatpak-zsh-completion
 zi ice blockf
-zi light zsh-users/zsh-completions
-#zi creinstall zsh-users/zsh-completions
-zi load z-shell/H-S-MW
 zi snippet OMZL::clipboard.zsh
 zi snippet OMZL::termsupport.zsh
 zi has'zoxide' wait lucid for \
@@ -128,7 +134,6 @@ zi has'zoxide' wait lucid for \
 export VISUAL=nvim
 export EDITOR=nvim
 
-export LS_COLORS="$(vivid generate jellybeans)" 
 export PATH="$PATH:/usr/local/bin"
 if ! type "yarn" > /dev/null; then
   export PATH="$PATH:$HOME/.cargo/bin/:$HOME/.local/bin"
