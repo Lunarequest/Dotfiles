@@ -52,9 +52,12 @@ zi is-snippet wait lucid for \
 
 zi light-mode for z-shell/z-a-meta-plugins @annexes \
  @z-shell \
+ @ext-git \
  @rust-utils \
- skip'zsh-autosuggestions' @zsh-users+fast\
- skip'ripgrep bat' @console-tools
+ @zsh-users+fast\
+ @fuzzy \
+ @py-utils \
+ skip'bat ripgrep' @console-tools
 [[ $COLORTERM = *(24bit|truecolor)* ]] || zmodload zsh/nearcolor
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -165,8 +168,8 @@ alias ls="ls --color=auto"
 alias l="ls"
 alias ll="ls -l"
 alias la="ls -la"
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
+alias zshconfig="mate ~/.zshrc"
+alias ohmyzsh="mate ~/.oh-my-zsh"
 
 # node stuff
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
