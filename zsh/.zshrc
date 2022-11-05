@@ -47,10 +47,12 @@ zi is-snippet wait lucid for \
     OMZP::python
 
 zi light-mode for z-shell/z-a-meta-plugins  @annexes \
- @z-shell \
+ skip'zsh-fancy-completions' @z-shell \
+ @zsh-users+fast \
  @ext-git \
  @rust-utils \
  @zsh-users+fast\
+ @zsh-users \
  @fuzzy \
  @py-utils \
  skip'bat ripgrep' @console-tools
