@@ -91,7 +91,12 @@ fi
 # Compilation flags
 export CC=clang
 export CXX=clang++
-export COMMON_FLAGS="-O2 -flto=thin -fuse-ld=/usr/bin/ldd"
+export LINKCC=clang
+export COMMON_FLAGS="-march=haswell -mtune=haswell -O2 -pipe -msse -msse2 -msse3 -mmmx -m3dnow -D_FORTIFY_SOURCE=2 -D_GLIBCXX_ASSERTIONS -fexceptions -fstack-protector-strong -fstack-clash-protection -fcf-protection"
+export LDFLAGS="-fuse-ld=lld -Wl,-z,defs -Wl,-z,now -Wl,-z,relro"
+export CFLAGS="${COMMON_FLAGS}"
+export CXXFLAGS="${COMMON_FLAGS}"
+export PYTHON_CONFIGURE_OPTS="--enable-optimizations --with-system-expat --enable-ipv6 --with-lto=thin"
 
 
 # Example aliases
