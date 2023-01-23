@@ -92,7 +92,7 @@ fi
 export CC=clang
 export CXX=clang++
 export LINKCC=clang
-export COMMON_FLAGS="-march=haswell -mtune=haswell -O2 -pipe -msse -msse2 -msse3 -mmmx -m3dnow -D_FORTIFY_SOURCE=2 -D_GLIBCXX_ASSERTIONS -fexceptions -fstack-protector-strong -fstack-clash-protection -fcf-protection"
+export COMMON_FLAGS="-march=tigerlake -mtune=tigerlake -O3 -pipe -msse -msse2 -msse3 -mmmx -m3dnow -D_FORTIFY_SOURCE=2 -D_GLIBCXX_ASSERTIONS -fexceptions -fstack-protector-strong -fstack-clash-protection -fcf-protection"
 export LDFLAGS="-fuse-ld=lld -Wl,-z,defs -Wl,-z,now -Wl,-z,relro"
 export CFLAGS="${COMMON_FLAGS}"
 export CXXFLAGS="${COMMON_FLAGS}"
@@ -109,8 +109,10 @@ alias ls="ls --color=auto"
 alias l="ls"
 alias ll="ls -l"
 alias la="ls -la"
-alias zshconfig="mate ~/.zshrc"
-alias ohmyzsh="mate ~/.oh-my-zsh"
+alias zshconfig="kate ~/.zshrc"
+alias iosc="osc -A https://api.suse.de"
+alias oscb="osc build --ccache"
+alias oscsd="osc service runall download_files"
 [ "$TERM" = "xterm-kitty" ] && alias ssh="kitty +kitten ssh"
 
 # node stuff
