@@ -109,6 +109,9 @@ alias ls="ls --color=auto"
 alias l="ls"
 alias ll="ls -l"
 alias la="ls -la"
+alias zshconfig="kate ~/.zshrc"
+alias ohmyzsh="kate ~/.oh-my-zsh"
+# use the ssh kitten when using kitty
 [ "$TERM" = "xterm-kitty" ] && alias ssh="kitty +kitten ssh"
 
 # node stuff
