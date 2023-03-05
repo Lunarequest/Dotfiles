@@ -1,4 +1,4 @@
--- require 'impatient'
+require 'impatient'
 require 'plugins'
 require 'config'
 require 'utils'
@@ -13,5 +13,4 @@ vim.cmd [[
     let mapleader="\<SPACE>"
     syntax enable
     colorscheme everforest
-    autocmd BufRead * silent! NvimTreeToggle
 ]]

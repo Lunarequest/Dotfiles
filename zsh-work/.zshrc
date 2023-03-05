@@ -36,7 +36,7 @@ fi
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 #export ZSH="~/.zsh"
-export SSH_ASKPASS="$(which ksshaskpass)"
+#export SSH_ASKPASS="$(which ksshaskpass)"
 zi is-snippet wait lucid for \
   OMZP::{ssh-agent,gpg-agent,git}\
   if'[[ -f /etc/os-release ]] && source /etc/os-release && [[ "$ID" = arch ]]'\
@@ -46,16 +46,17 @@ zi is-snippet wait lucid for \
   has'python' \
     OMZP::python
 
+zi pack for ls_colors
 zi light-mode for z-shell/z-a-meta-plugins  @annexes \
- skip'zsh-fancy-completions' @z-shell \
- @zsh-users+fast \
- @ext-git \
- @rust-utils \
- @zsh-users+fast\
- @zsh-users \
- @fuzzy \
- @py-utils \
- skip'bat ripgrep' @console-tools
+  skip'zsh-fancy-completions' @z-shell \
+  @zsh-users+fast \
+  @ext-git \
+  @rust-utils \
+  @zsh-users+fast\
+  @zsh-users \
+  @fuzzy \
+  @py-utils \
+  skip'bat ripgrep' @console-tools
 [[ $COLORTERM = *(24bit|truecolor)* ]] || zmodload zsh/nearcolor
 zi ice depth=1; zi light @romkatv
 COMPLETION_WAITING_DOTS="true"
@@ -74,11 +75,11 @@ zi has'zoxide' wait lucid for \
 export VISUAL=nvim
 export EDITOR=nvim
 
-export PATH="$PATH:/usr/local/bin"
+export PATH="/usr/local/bin:$PATH"
 if ! type "yarn" > /dev/null; then
-  export PATH="$PATH:$HOME/.cargo/bin/:$HOME/.local/bin"
+  export PATH="$PATH:$HOME/.zi/plugins/rust-toolchain/bin:$HOME/.local/bin"
 else
-  export PATH="$PATH:$HOME/.cargo/bin/:$(yarn global bin):$HOME/.local/bin"
+  export PATH="$PATH:$HOME/.zi/plugins/rust-toolchain/bin:$(yarn global bin):$HOME/.local/bin"
 fi
 
 # Preferred editor for local and remote sessions
@@ -92,16 +93,17 @@ fi
 export CC=clang
 export CXX=clang++
 export LINKCC=clang
-export COMMON_FLAGS="-march=tigerlake -mtune=tigerlake -O3 -pipe -msse -msse2 -msse3 -mmmx -m3dnow -D_FORTIFY_SOURCE=2 -D_GLIBCXX_ASSERTIONS -fexceptions -fstack-protector-strong -fstack-clash-protection -fcf-protection"
-export LDFLAGS="-fuse-ld=lld -Wl,-z,defs -Wl,-z,now -Wl,-z,relro"
+export COMMON_FLAGS="-march=tigerlake -mtune=tigerlake -O3 -pipe -fomit-frame-pointer"
+export LDFLAGS="-fuse-ld=lld"
 export CFLAGS="${COMMON_FLAGS}"
 export CXXFLAGS="${COMMON_FLAGS}"
-export PYTHON_CONFIGURE_OPTS="--enable-optimizations --with-system-expat --enable-ipv6 --with-lto=thin"
-
+export PYTHON_CONFIGURE_OPTS="--enable-optimizations --with-lto=thin --enable-ipv6 --with-pkg-config=yes --with-system-expat --with-system-libmpdec"
 
 # Example aliases
 
 alias cls="clear"
+alias gxl="gix clone"
+alias diff="kitty +kitten diff"
 alias kate='kstart5 kate'
 alias ip="ip -c"
 alias update_all="rpm-ostree update && flatpak update && rustup upgrade"
@@ -124,3 +126,6 @@ if [[ "$PROFILE_STARTUP" == true ]]; then
   unsetopt xtrace
   exec 2>&3 3>&-; zprof > ~/zshprofile$(date +'%s')
 fi
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion

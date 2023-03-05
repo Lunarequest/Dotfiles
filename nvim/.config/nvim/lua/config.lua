@@ -4,7 +4,6 @@ local cmd = vim.cmd -- for running vim commands
 local u = require 'utils'
 local nvim_lsp = require 'lspconfig'
 local luasnip = require 'luasnip'
-local capabilities = vim.lsp.protocol.make_client_capabilities()
 local cmp = require 'cmp'
 local fn = vim.fn
 local null_ls = require("null-ls")
@@ -91,7 +90,7 @@ end
 vim.cmd [[autocmd CursorHold,CursorHoldI * lua vim.diagnostic.open_float(nil, {focus=false})]]
 
 -- nvim cmp
-capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
+capabilities = require('cmp_nvim_lsp').default_capabilities()
 local servers = { 'clangd', 'rust_analyzer', 'pylsp', 'bashls' }
 for _, lsp in ipairs(servers) do
   nvim_lsp[lsp].setup {
