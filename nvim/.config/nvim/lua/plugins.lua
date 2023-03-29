@@ -30,12 +30,11 @@ return require('packer').startup(function()
     end,
   }
   -- the theme baby
-  use 'sainnhe/everforest'
+  use "EdenEast/nightfox.nvim"
   -- status line
-  use {
-    'nvim-lualine/lualine.nvim',
-    requires = { 'kyazdani42/nvim-web-devicons', opt = true },
-  }
+  use 'freddiehaddad/feline.nvim'
+  -- tab line
+  use 'nanozuki/tabby.nvim'
   -- lang server protcol
   use 'neovim/nvim-lspconfig'
   -- hook up none lsps with a general purpose lsp
@@ -82,10 +81,7 @@ return require('packer').startup(function()
       require('crates').setup()
     end,
   }
-  -- collaboration
   use 'jbyuki/instant.nvim'
-  -- markdown rendering
-  use { 'npxbr/glow.nvim', run = ':GlowInstall' }
   -- toggle term
   use { 'akinsho/toggleterm.nvim' }
   --rainbow brackets uwu
