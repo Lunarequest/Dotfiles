@@ -36,15 +36,17 @@ fi
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 #export ZSH="~/.zsh"
-#export SSH_ASKPASS="$(which ksshaskpass)"
+export SSH_ASKPASS="$(which ksshaskpass)"
 zi is-snippet wait lucid for \
-  OMZP::{ssh-agent,gpg-agent,git}\
-  if'[[ -f /etc/os-release ]] && source /etc/os-release && [[ "$ID" = arch ]]'\
-    OMZP::archlinux\
-  has'pip' \
-    OMZP::pip \
-  has'python' \
-    OMZP::python
+  atload"unalias grv g" \
+  OMZP::git \
+  OMZP::archlinux \
+    if'[[ -d ~/.nvm ]]' \
+  OMZP::nvm \
+    if'[[ -d ~/.ssh ]]' \
+  OMZP::ssh-agent \
+    if'[[ -d ~/.gnupg ]]' \
+  OMZP::gpg-agent
 
 zi pack for ls_colors
 zi light-mode for z-shell/z-a-meta-plugins  @annexes \
@@ -62,8 +64,11 @@ zi ice depth=1; zi light @romkatv
 COMPLETION_WAITING_DOTS="true"
 
 zi light bilelmoussaoui/flatpak-zsh-completion
-zi ice blockf
+zi ice svn
+zi snippet OMZL::functions.zsh
+zi ice svn
 zi snippet OMZL::clipboard.zsh
+zi ice svn
 zi snippet OMZL::termsupport.zsh
 zi has'zoxide' wait lucid for \
   z-shell/zsh-zoxide
@@ -122,10 +127,13 @@ export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+
 if [[ "$PROFILE_STARTUP" == true ]]; then
   unsetopt xtrace
   exec 2>&3 3>&-; zprof > ~/zshprofile$(date +'%s')
 fi
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+#export NVM_DIR="$HOME/.nvm"
+#[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+#[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion

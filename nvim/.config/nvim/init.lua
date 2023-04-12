@@ -6,11 +6,12 @@ require 'treesitter'
 require 'toggleterm-config'
 require 'discord'
 require 'keybindings'
+require 'feline'
 require 'statusline'
 require 'nvimtree'
 
 vim.cmd [[
     let mapleader="\<SPACE>"
     syntax enable
-    colorscheme nightfox
+    colorscheme terafox
 ]]
