@@ -98,7 +98,6 @@ export PYTHON_CONFIGURE_OPTS="--enable-optimizations --with-lto=thin --enable-ip
 # Example aliases
 
 alias cls="clear"
-alias gxl="gix clone"
 alias ip="ip -c"
 alias ls="exa --color=auto"
 alias l="ls"
