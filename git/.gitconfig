@@ -1,0 +1,28 @@
+[user]
+	email = luna.dragon@suse.com
+	name = Luna
+	signingkey = A8DDA64FEC4AF0A6C18821396AE2F19F65254342
+[gpg]
+  program = gpg
+
+[commit]
+  gpgsign = true
+
+[diff]
+    tool = kitty
+    guitool = kitty.gui
+[difftool]
+    prompt = false
+    trustExitCode = true
+[difftool "kitty"]
+    cmd = kitty +kitten diff $LOCAL $REMOTE
+[difftool "kitty.gui"]
+    cmd = kitty kitty +kitten diff $LOCAL $REMOTE
+
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+[init]
+  defaultBranch = "mistress"
