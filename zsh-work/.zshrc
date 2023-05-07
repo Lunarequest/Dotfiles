@@ -17,15 +17,6 @@ unset cs_ok cs_get
 
 typeset -g HISTSIZE=290000 SAVEHIST=290000 HISTFILE=~/.zhistory
 
-PROFILE_STARTUP=false
-if [[ "$PROFILE_STARTUP" == true ]]; then
-  zi ice atinit'zmodload zsh/zprof'
-  zmodload zsh/zprof
-  PS4=$'%D{%M%S%.} %N:%i> '
-  exec 3>&2 2>$HOME/startlog.$$
-  setopt xtrace prompt_subst
-fi
-        
 
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
