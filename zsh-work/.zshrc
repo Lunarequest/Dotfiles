@@ -63,12 +63,7 @@ export VISUAL=nvim
 export EDITOR=nvim
 
 export PATH="/usr/local/bin:$PATH"
-if ! type "yarn" > /dev/null; then
-  export PATH="$PATH:$HOME/.zi/plugins/rust-toolchain/bin:$HOME/.local/bin"
-else
-  export PATH="$PATH:$HOME/.zi/plugins/rust-toolchain/bin:$(yarn global bin):$HOME/.local/bin"
-fi
-
+export PATH="$PATH:$HOME/.zi/plugins/rust-toolchain/bin:$HOME/.local/bin"
 # Preferred editor for local and remote sessions
 # if [[ -n $SSH_CONNECTION ]]; then
 #   export EDITOR='vim'
