@@ -6,7 +6,7 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
-local cs_ok='7fab1ecb8d2ffbdb4aa98dd1e51cebaeaa4d8137e1de11938f3e0df24af262bb'
+local cs_ok='23a563e80249a866c7cba3ac44eaedb1ca38f20c35690fb764a7cb75e95d38be'
 local cs_get=$(sha256sum <(curl -sL init.zshell.dev) | awk '{print $1}')
 [[ $cs_ok == $cs_get ]] && { source <(curl -sL init.zshell.dev); zzinit; } || {
   typeset -A ZI

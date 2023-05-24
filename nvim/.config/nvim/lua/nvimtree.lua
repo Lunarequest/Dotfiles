@@ -6,9 +6,11 @@ require('nvim-tree').setup {
   },
   view = {
     width = 30,
-    hide_root_folder = true,
     side = 'left',
   },
+  renderer = {
+    root_folder_label = false
+  }
 }
 
 local function open_nvim_tree() 

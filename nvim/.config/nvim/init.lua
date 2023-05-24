@@ -12,5 +12,5 @@ require 'nvimtree'
 vim.cmd [[
     let mapleader="\<SPACE>"
     syntax enable
-    colorscheme terafox
+    colorscheme material
 ]]
