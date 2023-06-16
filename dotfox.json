@@ -1,0 +1,27 @@
+{
+    "config": [
+        {
+            "folder": "git"
+        },
+        {
+            "folder": "kitty"
+        },
+        {
+            "folder": "mpd"
+        },
+        {
+            "folder": "neofetch"
+        },
+        {
+            "folder": "nvim"
+        },
+        {
+            "hostname": "aerial",
+            "folder": "zsh-work"
+        },
+        {
+            "hostname": "gentuwu",
+            "folder": "zsh-personal"
+        }
+    ]
+}

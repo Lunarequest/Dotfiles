@@ -85,7 +85,7 @@ export PYTHON_CONFIGURE_OPTS="--enable-optimizations --with-lto=thin --enable-ip
 
 alias cls="clear"
 alias ip="ip -c"
-alias ls="exa --color=auto"
+alias ls="exa --icons --color=auto"
 alias l="ls"
 alias ll="ls -l"
 alias la="ls -la"
@@ -111,3 +111,7 @@ if [[ "$PROFILE_STARTUP" == true ]]; then
 fi
 
 eval "$(rtx activate zsh)"
+
+# Wasmer
+export WASMER_DIR="/home/luna/.wasmer"
+[ -s "$WASMER_DIR/wasmer.sh" ] && source "$WASMER_DIR/wasmer.sh"
