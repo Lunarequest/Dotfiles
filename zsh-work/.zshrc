@@ -104,12 +104,6 @@ export PATH="$HOME/.yarn/bin:$PATH"
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
-
-if [[ "$PROFILE_STARTUP" == true ]]; then
-  unsetopt xtrace
-  exec 2>&3 3>&-; zprof > ~/zshprofile$(date +'%s')
-fi
-
 eval "$(rtx activate zsh)"
 
 # Wasmer
