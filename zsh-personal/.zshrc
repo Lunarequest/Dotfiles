@@ -75,7 +75,7 @@ export PATH="$PATH:$HOME/.zi/plugins/rust-toolchain/bin:$HOME/.local/bin:$HOME/.
 export CC=clang
 export CXX=clang++
 export LINKCC=clang
-export COMMON_FLAGS="-march=brodwell -mtune=brodwell -O3 -pipe -fomit-frame-pointer -D_FORTIFY_SOURCE=2 -D_GLIBCXX_ASSERTIONS -fexceptions -fstack-protector-strong -fstack-clash-protection -fcf-protection"
+export COMMON_FLAGS="-march=broadwell -mtune=broadwell -O3 -pipe -fomit-frame-pointer -D_FORTIFY_SOURCE=2 -D_GLIBCXX_ASSERTIONS -fexceptions -fstack-protector-strong -fstack-clash-protection -fcf-protection"
 export LDFLAGS="-fuse-ld=lld -Wl,-z,defs -Wl,-z,now -Wl,-z,relro"
 export CFLAGS="${COMMON_FLAGS}"
 export CXXFLAGS="${COMMON_FLAGS}"
