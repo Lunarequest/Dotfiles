@@ -5,12 +5,12 @@ require 'utils'
 require 'treesitter'
 require 'toggleterm-config'
 require 'keybindings'
-require 'feline'
+vim.cmd("colorscheme nightfox")
+require 'user.ui.feline'
 require 'statusline'
 require 'nvimtree'
 
 vim.cmd [[
     let mapleader="\<SPACE>"
     syntax enable
-    colorscheme material
 ]]

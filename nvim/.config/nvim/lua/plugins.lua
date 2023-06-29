@@ -30,7 +30,7 @@ return require('packer').startup(function()
     end,
   }
   -- the theme baby
-  use "kaicataldo/material.vim"
+  use "EdenEast/nightfox.nvim"
   -- status line
   use 'freddiehaddad/feline.nvim'
   -- tab line
