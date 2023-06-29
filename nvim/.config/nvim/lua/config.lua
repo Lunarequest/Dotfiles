@@ -6,7 +6,9 @@ local nvim_lsp = require 'lspconfig'
 local luasnip = require 'luasnip'
 local cmp = require 'cmp'
 local fn = vim.fn
-local null_ls = require("null-ls")
+local null_ls = require 'null-ls'
+local nightfox = require 'nightfox'
+local hints = require 'inlay-hints'
 
 -- set line number
 o.number = true
@@ -33,6 +35,9 @@ o.hidden = true
 if fn.has 'termguicolors' == 1 then
   o.termguicolors = true
 end
+
+nightfox.setup({})
+hints.setup()
 
 -- aurgroup/autocmd hasn't been implemented yet :(
 u.create_augroup({
@@ -66,9 +71,7 @@ o.updatetime = 250 -- make git gutter seem more responsive
 -- glow
 g.glow_broder = 'rounded'
 
--- everforest
-g.everforest_background = 'soft'
-g.everforest_better_performance = 1
+
 
 -- sign config lsp
 vim.diagnostic.config {
@@ -94,7 +97,9 @@ capabilities = require('cmp_nvim_lsp').default_capabilities()
 local servers = { 'clangd', 'rust_analyzer', 'pylsp', 'bashls' }
 for _, lsp in ipairs(servers) do
   nvim_lsp[lsp].setup {
-    -- on_attach = my_custom_on_attach,
+    on_attach = function(c,b)
+      hints.on_attach(c,b)
+    end,
     capabilities = capabilities,
   }
 end

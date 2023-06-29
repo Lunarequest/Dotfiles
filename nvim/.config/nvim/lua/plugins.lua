@@ -37,6 +37,7 @@ return require('packer').startup(function()
   use 'nanozuki/tabby.nvim'
   -- lang server protcol
   use 'neovim/nvim-lspconfig'
+  use 'simrat39/inlay-hints.nvim'
   -- hook up none lsps with a general purpose lsp
   use {
      'jose-elias-alvarez/null-ls.nvim',

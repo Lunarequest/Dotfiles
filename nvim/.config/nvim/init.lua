@@ -5,7 +5,7 @@ require 'utils'
 require 'treesitter'
 require 'toggleterm-config'
 require 'keybindings'
-vim.cmd("colorscheme nightfox")
+vim.cmd("colorscheme carbonfox")
 require 'user.ui.feline'
 require 'statusline'
 require 'nvimtree'
