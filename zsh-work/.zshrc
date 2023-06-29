@@ -84,11 +84,10 @@ export PYTHON_CONFIGURE_OPTS="--enable-optimizations --with-lto=thin --enable-ip
 # Example aliases
 
 alias cls="clear"
-alias ip="ip -c"
-alias ls="exa --icons --color=auto"
 alias l="ls"
 alias ll="ls -l"
 alias la="ls -la"
+
 alias zshconfig="kate ~/.zshrc"
 alias iosc="osc -A https://api.suse.de"
 alias oscb="osc build --ccache"
@@ -97,6 +96,10 @@ alias oscsd="osc service runall download_files"
 if [ "$TERM" = "xterm-kitty" ]; then 
   alias ssh="kitty +kitten ssh"
   alias diff="kitty +kitten diff"
+  alias icat="kitty +kitten icat"
+  alias cat='bat --paging=never'
+  alias ip="ip -c"
+  alias ls="exa --icons --color=auto"
 fi
 # node stuff
 export PATH="$HOME/.yarn/bin:$PATH"
