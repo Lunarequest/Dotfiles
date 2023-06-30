@@ -8,3 +8,10 @@ config
 #ell/!
 Well/!
 Well
+cmp
+lua
+toml
+toml
+FileType
+autocmd
+nvim

@@ -1,5 +1,5 @@
 require('nvim-treesitter.configs').setup {
-  ensure_installed = { 'rust', 'python', 'lua' },
+  ensure_installed = { 'rust', 'python', 'lua', 'yaml', 'json', 'javascript', 'typescript', 'tsx' },
   highlight = {
     enable = true,
     disable = { 'javascript' },
@@ -9,5 +9,6 @@ require('nvim-treesitter.configs').setup {
     enable = true,
     extended_mode = true,
     max_file_lines = nil,
+    strategy = require('ts-rainbow').strategy.global,
   },
 }

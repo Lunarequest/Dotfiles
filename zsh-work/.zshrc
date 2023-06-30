@@ -62,8 +62,9 @@ zi has'zoxide' wait lucid for \
 export VISUAL=nvim
 export EDITOR=nvim
 
-export PATH="/usr/local/bin:$PATH"
+export PATH="/usr/local/bin:$PATH:/home/luna/.deno/bin"
 export PATH="$PATH:$HOME/.zi/plugins/rust-toolchain/bin:$HOME/.local/bin"
+export DENO_INSTALL="/home/luna/.deno"
 # Preferred editor for local and remote sessions
 # if [[ -n $SSH_CONNECTION ]]; then
 #   export EDITOR='vim'

@@ -92,6 +92,7 @@ alias zshconfig="kate ~/.zshrc"
 if [ "$TERM" = "xterm-kitty" ]; then 
   alias ssh="kitty +kitten ssh"
   alias diff="kitty +kitten diff"
+  alias icat="kitty +kitten icat"
   alias cat='bat --paging=never'
   alias ip="ip -c"
   alias ls="exa --icons --color=auto"
