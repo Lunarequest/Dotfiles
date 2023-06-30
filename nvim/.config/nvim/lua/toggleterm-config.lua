@@ -2,7 +2,7 @@ require('toggleterm').setup {
   size = 10,
   open_mapping = [[<C-t>]],
   hide_numbers = true,
-  direction = 'horizontal',
+  direction = 'float',
   shade_filetypes = {},
   shade_terminals = false,
   start_in_insert = true,

@@ -96,6 +96,8 @@ if [ "$TERM" = "xterm-kitty" ]; then
   alias cat='bat --paging=never'
   alias ip="ip -c"
   alias ls="exa --icons --color=auto"
+else
+  alias ls="--color=auto"
 fi
 # node stuff
 export PATH="$HOME/.yarn/bin:$PATH"
