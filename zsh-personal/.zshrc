@@ -64,6 +64,8 @@ export EDITOR=nvim
 
 export PATH="/usr/local/bin:$PATH"
 export PATH="$PATH:$HOME/.zi/plugins/rust-toolchain/bin:$HOME/.local/bin:$HOME/.cargo/bin"
+export DENO_INSTALL="/home/luna/.deno"
+export PATH="$DENO_INSTALL/bin:$PATH"
 # Preferred editor for local and remote sessions
 # if [[ -n $SSH_CONNECTION ]]; then
 #   export EDITOR='vim'
@@ -87,17 +89,15 @@ alias cls="clear"
 alias l="ls"
 alias ll="ls -l"
 alias la="ls -la"
+alias cat='bat --paging=never'
+alias ip="ip -c"
+alias ls="exa --icons --color=auto"
 alias zshconfig="kate ~/.zshrc"
 
 if [ "$TERM" = "xterm-kitty" ]; then 
   alias ssh="kitty +kitten ssh"
   alias diff="kitty +kitten diff"
   alias icat="kitty +kitten icat"
-  alias cat='bat --paging=never'
-  alias ip="ip -c"
-  alias ls="exa --icons --color=auto"
-else
-  alias ls="--color=auto"
 fi
 # node stuff
 export PATH="$HOME/.yarn/bin:$PATH"

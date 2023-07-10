@@ -8,6 +8,9 @@ require('nvim-tree').setup {
     width = 30,
     side = 'left',
   },
+  filters = {
+    custom="^.git$",
+  },
   renderer = {
     root_folder_label = false
   }
