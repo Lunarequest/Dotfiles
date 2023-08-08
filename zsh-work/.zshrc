@@ -21,7 +21,7 @@ typeset -g HISTSIZE=290000 SAVEHIST=290000 HISTFILE=~/.zhistory
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 #export ZSH="~/.zsh"
-export SSH_ASKPASS="$(which ksshaskpass)"
+export SSH_ASKPASS="/usr/libexec/ssh/ksshaskpass"
 zi is-snippet wait lucid for \
   atload"unalias grv g" \
   OMZP::git \
