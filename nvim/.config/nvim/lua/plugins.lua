@@ -3,7 +3,22 @@ return { -- nvimtree for that lovely filesystem view
     'kyazdani42/nvim-tree.lua',
     dependencies = 'kyazdani42/nvim-web-devicons',
     config = function()
-        require('nvim-tree').setup {}
+        require('nvim-tree').setup {
+            diagnostics = {
+              enable = true,
+            },
+            view = {
+              width = 30,
+              side = 'left',
+            },
+            filters = {
+              custom= { "^.git$" },
+              exclude = { ".gitignore" }
+            },
+            renderer = {
+              root_folder_label = false
+            }
+          }
     end
 }, -- the theme baby
 {
