@@ -15,3 +15,5 @@ toml
 FileType
 autocmd
 nvim
+#ompa/!
+Gompa/!

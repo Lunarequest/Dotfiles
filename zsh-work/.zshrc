@@ -63,7 +63,7 @@ export VISUAL=nvim
 export EDITOR=nvim
 
 export PATH="/usr/local/bin:$PATH:/home/luna/.deno/bin"
-export PATH="$PATH:$HOME/.zi/plugins/rust-toolchain/bin:$HOME/.local/bin"
+export PATH="$PATH:$HOME/.zi/plugins/rust-toolchain/bin:$HOME/.local/bin:$HOME/go/bin/"
 export DENO_INSTALL="/home/luna/.deno"
 # Preferred editor for local and remote sessions
 # if [[ -n $SSH_CONNECTION ]]; then
@@ -88,6 +88,9 @@ alias cls="clear"
 alias l="ls"
 alias ll="ls -l"
 alias la="ls -la"
+alias cat='bat --paging=never'
+alias ip="ip -c"
+alias ls="exa --icons --color=auto"
 
 alias zshconfig="kate ~/.zshrc"
 alias iosc="osc -A https://api.suse.de"
@@ -98,11 +101,6 @@ if [ "$TERM" = "xterm-kitty" ]; then
   alias ssh="kitty +kitten ssh"
   alias diff="kitty +kitten diff"
   alias icat="kitty +kitten icat"
-  alias cat='bat --paging=never'
-  alias ip="ip -c"
-  alias ls="exa --icons --color=auto"
-else
-  alias ls="ls --color=auto"
 fi
 # node stuff
 export PATH="$HOME/.yarn/bin:$PATH"

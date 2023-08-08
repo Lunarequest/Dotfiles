@@ -9,7 +9,8 @@ require('nvim-tree').setup {
     side = 'left',
   },
   filters = {
-    custom="^.git$",
+    custom= { "^.git$" },
+    exclude = { ".gitignore" }
   },
   renderer = {
     root_folder_label = false
